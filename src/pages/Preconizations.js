@@ -7,20 +7,24 @@ function onSignOut() {
 function Preconizations() {
     return (
       <div>
-        <header>
+        <header class="text-center">
             <img src={logo} className="App-logo" alt="logo" />
         </header>
-        <h1> SleepyGo </h1>
-           <p> Let good sleep take care of your mental health </p>
-
-            <p className="lead">
+        <h1 class="text-center"> SleepyGo </h1>
+           <p class="text-center"> Let good sleep take care of your mental health </p>
+            <div class="text-center">
+                <p class="text-center">
                 Based on the data you recently provided, here's your mental health indicator and advices :
-            </p>
+                </p>
+            </div>
 
-            <p> Your mental health is at 89% ! Keep up the great work and pay attention to mental traps today. </p>
-            <p>
-            <button className="btn btn-primary" onClick={() => onSignOut()}>Se déconnecter</button>
-            </p>
+
+            <p class="text-center"> Your mental health is at 89% ! Keep up the great work and pay attention to mental traps today. </p>
+            <div class="text-center">
+                <div class="align-text-bottom">
+                    <button className="btn btn-primary" onClick={() => onSignOut()}>Logout</button>
+                </div>
+            </div>
       </div>
     );
   }

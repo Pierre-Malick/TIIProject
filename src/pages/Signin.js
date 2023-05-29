@@ -78,7 +78,7 @@ function Signin() {
   }
 
   return (
-    <div className="Signup">
+    <div className="Signin">
       {loading === false && error === false && user !== null && (
         <p>
           <b>
