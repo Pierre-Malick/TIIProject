@@ -1,10 +1,15 @@
-import logo from './images/moon1.jpg';
+import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
-import { BrowserRouter as BrowserRouter, Routes, Route } from 'react-router-dom';
-import Signup from './pages/Signup.js';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Auth from "./pages/Auth"
+import useToken from './components/useToken';
+import Login from './pages/Auth'
+
 import HomePage from './pages/Home.js'
-import Signin from './pages/Signin.js'
-import Layout from './pages/Layout.js'
+import DashB from './pages/Dashboard'
+import Preconizations from "./pages/Preconizations";
+
 
 
 //check jwt token
@@ -12,26 +17,34 @@ import Layout from './pages/Layout.js'
 // if (token) {
 //     setAuthToken(token);
 // }
+// function setToken(userToken) {
+//   localStorage.setItem('token', JSON.stringify(userToken));
+// }
+
+// function getToken() {
+//   const tokenString = localStorage.getItem('token');
+//   const userToken = JSON.parse(tokenString);
+//   return userToken?.token
+// }
+
 
 function App() {
+  const { token, setToken } = useToken();
+
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      {/* <BrowserRouter>
-          <Routes>
-            <Route exact path="/" component={<HomePage />} />
-            <Route path="/SignIn" component={<Signin />} />
-            <Route path="/SignUp" component={<Signup />} />
-            {/* <Route path="/fruit/:id" component={FruitDetailsComponent} /> */}
-            {/* Define more routes here */}
-            {/* The "exact" attribute should be used for the default route */}
-            {/* You can also define a "NotFound" component for 404 errors */}
-          {/* </Routes> */}
-        {/* </BrowserRouter> */}
-        <p> nothing </p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/dashboard" element={<DashB />} />
+        <Route path="/preconizations" element={<Preconizations />} />
+        {/* <Route path="/auth/login" element={<SignIn />} />
+        <Route path="/auth/signup" element={<SignUp />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
